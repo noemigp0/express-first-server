@@ -13,10 +13,8 @@ app.listen(8080, () => {
 
 const getReactStudents = async () => {
   const koders = await fsPromises.readFile("koders.json", "utf-8");
-  const kodersJson = JSON.parse(koders); // que este parseado a json.
-  const reactModule = kodersJson.alumnos.filter((cv) => {
-    return cv.modulo === "React";
-  });
+  const kodersJson = JSON.parse(koders); // que este parseado a json.//este va a ser mi conten type
+  const reactModule = kodersJson.alumnos.filter((cv) => cv.modulo === "React");
   //
   //console.log(reactModule)
  return reactModule
