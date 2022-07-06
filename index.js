@@ -137,8 +137,30 @@ app.post("/koders", async (request, response) => {
 
 //PATCH
 
-app.patch("/koders/:id", (request, response) => {
+app.patch("/koders/:id", async (request, response) => {
   console.log(request.body)
+  const { id } = request.params
+  const { name, modulo , gen, edad } = request.body
+  // console.log("id",id);
+  // console.log("name", name)
+  // console.log("modulo", modulo)
+  // console.log("gen", gen)
+  // console.log("edad", gen)
+  //const koders = await fsPromises.readFile("koders.json", "utf8")
+  //Acceder a los datos del archivo
+  const koders = await fsPromises.readFile("koders.json", "utf8")
+  //Parsearlo a JSON
+  const kodersJson = JSON.parse(koders)
+  console.log(kodersJson)
+  
+
+  koderById = kodersJson.alumnos.filter((element) => {
+   return element.id === parseInt(id)
+  })
+
+  koderById
+
+
   response.json("Hola desdee patch") 
   
 })
